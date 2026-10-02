@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { PiShareNetwork, PiArrowsLeftRight, PiHeart, PiHeartFill } from 'react-icons/pi';
 import { useCart } from '../../context/CartContext';
-import { formatRp } from '../../utils/format';
+import { formatPrice } from '../../utils/format';
 
 // Reusable product card with the hover overlay from the design
 function ProductCard({ product, layout = 'grid' }) {
@@ -59,8 +59,8 @@ function ProductCard({ product, layout = 'grid' }) {
         </h3>
         <p className="product-sub">{product.subtitle}</p>
         <div className="product-price">
-          <span>{formatRp(product.price)}</span>
-          {product.oldPrice && <del>{formatRp(product.oldPrice)}</del>}
+          <span>{formatPrice(product.price)}</span>
+          {product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
         </div>
       </div>
     </article>

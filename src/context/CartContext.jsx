@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const CartContext = createContext(null);
 
-const STORAGE_KEY = 'furniro-cart';
+const STORAGE_KEY = 'furniro-cart-usd'; // new key so old Rp-priced carts are not reused
 
 const loadCart = () => {
   try {

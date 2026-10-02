@@ -43,7 +43,7 @@ furniro/
     ├── index.css              # Theme tokens + all component styles + responsive rules
     ├── context/CartContext.jsx      # cart, side-cart, wishlist, compare (useState/useEffect)
     ├── hooks/useProducts.js         # fetches DummyJSON with useEffect (+ offline fallback)
-    ├── utils/format.js              # Rp / Rs. price formatting
+    ├── utils/format.js              # US dollar price formatting
     ├── data/                        # products, home sections, blog, comparison specs
     ├── components/
     │   ├── layout/   Navbar, Footer, Layout

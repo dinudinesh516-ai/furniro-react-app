@@ -3,7 +3,7 @@ import Alert from 'react-bootstrap/Alert';
 import PageBanner from '../components/common/PageBanner';
 import FeaturesBar from '../components/common/FeaturesBar';
 import { useCart } from '../context/CartContext';
-import { formatRs } from '../utils/format';
+import { formatPrice } from '../utils/format';
 
 const initialForm = {
   firstName: '', lastName: '', company: '', country: 'Sri Lanka', street: '',
@@ -122,16 +122,16 @@ function Checkout() {
                     <span className="text-gray">
                       {item.title} <span className="text-dark ms-2">X {item.qty}</span>
                     </span>
-                    <span>{formatRs(item.price * item.qty)}</span>
+                    <span>{formatPrice(item.price * item.qty)}</span>
                   </div>
                 ))}
                 <div className="d-flex justify-content-between sum-row">
                   <span>Subtotal</span>
-                  <span>{formatRs(subtotal)}</span>
+                  <span>{formatPrice(subtotal)}</span>
                 </div>
                 <div className="d-flex justify-content-between sum-row align-items-center">
                   <span>Total</span>
-                  <span className="text-gold fs-4 fw-bold">{formatRs(subtotal)}</span>
+                  <span className="text-gold fs-4 fw-bold">{formatPrice(subtotal)}</span>
                 </div>
                 <hr className="my-4" />
 

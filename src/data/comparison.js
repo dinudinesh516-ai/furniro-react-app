@@ -52,7 +52,7 @@ export const defaultCompareProducts = [
   {
     id: 'asgaard',
     title: 'Asgaard Sofa',
-    price: 250000,
+    price: 2500,
     rating: 4.7,
     reviews: 204,
     image: '/images/asgaard-sofa.jpg',
@@ -66,7 +66,7 @@ export const defaultCompareProducts = [
   {
     id: 'outdoor',
     title: 'Outdoor Sofa Set',
-    price: 224000,
+    price: 2240,
     rating: 4.2,
     reviews: 145,
     image: '/images/outdoor-sofa.jpg',

@@ -14,14 +14,14 @@ const img = (name) => `/images/${name}`;
 const galleryImages = [img('asgaard-sofa.jpg'), img('outdoor-sofa.jpg'), img('casaliving.jpg')];
 
 export const designProducts = [
-  { id: 'syltherine', title: 'Syltherine', subtitle: 'Stylish cafe chair', price: 2500000, oldPrice: 3500000, badge: { type: 'discount', label: '-30%' }, image: img('syltherine.jpg'), room: 'dining' },
-  { id: 'leviosa', title: 'Leviosa', subtitle: 'Stylish cafe chair', price: 2500000, image: img('leviosa.jpg'), room: 'dining' },
-  { id: 'lolito', title: 'Lolito', subtitle: 'Luxury big sofa', price: 7000000, oldPrice: 14000000, badge: { type: 'discount', label: '-50%' }, image: img('lolito.jpg'), room: 'living' },
-  { id: 'respira', title: 'Respira', subtitle: 'Outdoor bar table and stool', price: 500000, badge: { type: 'new', label: 'New' }, image: img('respira.jpg'), room: 'dining' },
-  { id: 'grifo', title: 'Grifo', subtitle: 'Night lamp', price: 1500000, image: img('grifo.jpg'), room: 'bedroom' },
-  { id: 'muggo', title: 'Muggo', subtitle: 'Small mug', price: 150000, badge: { type: 'new', label: 'New' }, image: img('muggo.jpg'), room: 'dining' },
-  { id: 'pingky', title: 'Pingky', subtitle: 'Cute bed set', price: 7000000, oldPrice: 14000000, badge: { type: 'discount', label: '-50%' }, image: img('pingky.jpg'), room: 'bedroom' },
-  { id: 'potty', title: 'Potty', subtitle: 'Minimalist flower pot', price: 500000, badge: { type: 'new', label: 'New' }, image: img('potty.jpg'), room: 'living' },
+  { id: 'syltherine', title: 'Syltherine', subtitle: 'Stylish cafe chair', price: 250, oldPrice: 350, badge: { type: 'discount', label: '-30%' }, image: img('syltherine.jpg'), room: 'dining' },
+  { id: 'leviosa', title: 'Leviosa', subtitle: 'Stylish cafe chair', price: 250, image: img('leviosa.jpg'), room: 'dining' },
+  { id: 'lolito', title: 'Lolito', subtitle: 'Luxury big sofa', price: 700, oldPrice: 1400, badge: { type: 'discount', label: '-50%' }, image: img('lolito.jpg'), room: 'living' },
+  { id: 'respira', title: 'Respira', subtitle: 'Outdoor bar table and stool', price: 50, badge: { type: 'new', label: 'New' }, image: img('respira.jpg'), room: 'dining' },
+  { id: 'grifo', title: 'Grifo', subtitle: 'Night lamp', price: 150, image: img('grifo.jpg'), room: 'bedroom' },
+  { id: 'muggo', title: 'Muggo', subtitle: 'Small mug', price: 15, badge: { type: 'new', label: 'New' }, image: img('muggo.jpg'), room: 'dining' },
+  { id: 'pingky', title: 'Pingky', subtitle: 'Cute bed set', price: 700, oldPrice: 1400, badge: { type: 'discount', label: '-50%' }, image: img('pingky.jpg'), room: 'bedroom' },
+  { id: 'potty', title: 'Potty', subtitle: 'Minimalist flower pot', price: 50, badge: { type: 'new', label: 'New' }, image: img('potty.jpg'), room: 'living' },
 ].map((p) => ({
   ...p,
   source: 'design',
@@ -35,9 +35,8 @@ export const designProducts = [
   tags: ['Sofa', 'Chair', 'Home', 'Shop'],
 }));
 
-// USD (API) -> Rupiah so API prices look like the design prices
-const USD_TO_RP = 16000;
-const roundThousand = (n) => Math.round(n / 1000) * 1000;
+// Prices are kept in US dollars exactly as the API returns them
+const round2 = (n) => Math.round(n * 100) / 100;
 
 const guessRoom = (title = '') => {
   const t = title.toLowerCase();
@@ -47,14 +46,14 @@ const guessRoom = (title = '') => {
 };
 
 export const normalizeApiProduct = (p) => {
-  const price = roundThousand(p.price * USD_TO_RP);
+  const price = p.price;
   const discount = Math.round(p.discountPercentage || 0);
 
   let badge = null;
   let oldPrice = null;
   if (discount >= 10) {
     badge = { type: 'discount', label: `-${discount}%` };
-    oldPrice = roundThousand(price / (1 - discount / 100));
+    oldPrice = round2(price / (1 - discount / 100));
   } else if (discount < 5) {
     badge = { type: 'new', label: 'New' };
   }

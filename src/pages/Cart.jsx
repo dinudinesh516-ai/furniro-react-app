@@ -3,7 +3,7 @@ import { PiTrashFill } from 'react-icons/pi';
 import PageBanner from '../components/common/PageBanner';
 import FeaturesBar from '../components/common/FeaturesBar';
 import { useCart } from '../context/CartContext';
-import { formatRs } from '../utils/format';
+import { formatPrice } from '../utils/format';
 
 function Cart() {
   const { cartItems, updateQty, removeFromCart, subtotal } = useCart();
@@ -42,7 +42,7 @@ function Cart() {
                           <div className="cart-thumb"><img src={item.image} alt={item.title} /></div>
                         </td>
                         <td className="text-gray">{item.title}</td>
-                        <td className="text-gray">{formatRs(item.price)}</td>
+                        <td className="text-gray">{formatPrice(item.price)}</td>
                         <td>
                           <input
                             type="number"
@@ -53,7 +53,7 @@ function Cart() {
                             aria-label={`Quantity of ${item.title}`}
                           />
                         </td>
-                        <td>{formatRs(item.price * item.qty)}</td>
+                        <td>{formatPrice(item.price * item.qty)}</td>
                         <td>
                           <button type="button" className="trash-btn" onClick={() => removeFromCart(item.id)} aria-label={`Remove ${item.title}`}>
                             <PiTrashFill />
@@ -71,11 +71,11 @@ function Cart() {
                 <h2>Cart Totals</h2>
                 <div className="totals-row">
                   <span>Subtotal</span>
-                  <span className="text-gray">{formatRs(subtotal)}</span>
+                  <span className="text-gray">{formatPrice(subtotal)}</span>
                 </div>
                 <div className="totals-row">
                   <span>Total</span>
-                  <span className="text-gold fs-5 fw-medium">{formatRs(subtotal)}</span>
+                  <span className="text-gold fs-5 fw-medium">{formatPrice(subtotal)}</span>
                 </div>
                 <Link to="/checkout" className={`outline-btn d-inline-block mt-4 ${cartItems.length ? '' : 'disabled'}`}>
                   Check Out

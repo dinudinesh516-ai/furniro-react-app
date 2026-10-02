@@ -3,7 +3,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { BsBagX } from 'react-icons/bs';
 import { PiXCircleFill } from 'react-icons/pi';
 import { useCart } from '../../context/CartContext';
-import { formatRs } from '../../utils/format';
+import { formatPrice } from '../../utils/format';
 
 // Side-cart preview (react-bootstrap Offcanvas) shown after "Add to cart"
 function CartSidebar() {
@@ -27,7 +27,7 @@ function CartSidebar() {
               <p className="side-title text-truncate">{item.title}</p>
               <p className="side-qty">
                 {item.qty} <span className="mx-2">X</span>
-                <span className="text-gold">{formatRs(item.price)}</span>
+                <span className="text-gold">{formatPrice(item.price)}</span>
               </p>
             </div>
             <button
@@ -45,7 +45,7 @@ function CartSidebar() {
       <div className="cart-sidebar-foot">
         <div className="d-flex justify-content-between px-4 pb-3">
           <span>Subtotal</span>
-          <strong className="text-gold">{formatRs(subtotal)}</strong>
+          <strong className="text-gold">{formatPrice(subtotal)}</strong>
         </div>
         <div className="side-buttons d-flex gap-2 px-3 py-4">
           <Link to="/cart" className="pill-btn" onClick={closeCart}>Cart</Link>

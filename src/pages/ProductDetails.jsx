@@ -6,7 +6,7 @@ import Rating from '../components/common/Rating';
 import OurProducts from '../components/home/OurProducts';
 import useProducts from '../hooks/useProducts';
 import { useCart } from '../context/CartContext';
-import { formatRs } from '../utils/format';
+import { formatPrice } from '../utils/format';
 
 const sizes = ['L', 'XL', 'XS'];
 const colors = ['#816DFA', '#000000', '#B88E2F'];
@@ -87,7 +87,7 @@ function ProductDetails({ id }) {
             <div className="col-lg-6">
               <div className="detail-info">
                 <h1>{product.title}</h1>
-                <p className="detail-price">{formatRs(product.price)}</p>
+                <p className="detail-price">{formatPrice(product.price)}</p>
                 <div className="d-flex align-items-center gap-3 mb-3">
                   <Rating value={product.rating} />
                   <span className="v-divider" />

@@ -6,7 +6,7 @@ import Rating from '../components/common/Rating';
 import useProducts from '../hooks/useProducts';
 import { useCart } from '../context/CartContext';
 import { comparisonSections, defaultCompareProducts, toCompareProduct } from '../data/comparison';
-import { formatRs } from '../utils/format';
+import { formatPrice } from '../utils/format';
 
 function Comparison() {
   const { products } = useProducts();
@@ -40,7 +40,7 @@ function Comparison() {
                       <img src={p.image} alt={p.title} />
                     </div>
                     <h3>{p.title}</h3>
-                    <p className="mb-1">{formatRs(p.price)}</p>
+                    <p className="mb-1">{formatPrice(p.price)}</p>
                     <div className="d-flex align-items-center gap-2 small">
                       <strong>{p.rating}</strong>
                       <Rating value={Number(p.rating)} />
